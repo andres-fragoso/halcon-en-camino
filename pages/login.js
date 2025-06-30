@@ -1,21 +1,17 @@
 import { useState } from 'react';
-import { auth } from '../firebaseConfig';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [numero, setNumero] = useState('');
   const router = useRouter();
 
-  const handleLogin = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
+  const handleLogin = () => {
+    const regex = /^\d{10}$/;
+    if (regex.test(numero)) {
       router.push('/rutas');
-    } catch (error) {
-      alert('Error al iniciar sesión');
-      console.error(error);
+    } else {
+      alert('Ingresa un número válido de 10 dígitos');
     }
   };
 
@@ -44,13 +40,19 @@ export default function Login() {
             padding: 8px;
             margin: 5px;
             width: 250px;
+            font-size: 16px;
+            text-align: center;
           }
         `}</style>
       </Head>
       <div className="container">
-        <h2>Iniciar sesión</h2>
-        <input type="email" placeholder="Correo" onChange={e => setEmail(e.target.value)} />
-        <input type="password" placeholder="Contraseña" onChange={e => setPassword(e.target.value)} />
+        <h2>Acceso a Halcón en Camino</h2>
+        <input
+          type="tel"
+          maxLength="10"
+          placeholder="Ingresa tu número"
+          onChange={e => setNumero(e.target.value)}
+        />
         <button onClick={handleLogin}>Entrar</button>
       </div>
     </>
