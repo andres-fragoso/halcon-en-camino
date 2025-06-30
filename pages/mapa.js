@@ -1,8 +1,10 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+import 'leaflet/dist/leaflet.css';
 
-export default function Page() {
-  const router = useRouter();
+const Map = dynamic(() => import('../components/MapView'), { ssr: false });
+
+export default function Mapa() {
   return (
     <>
       <Head>
@@ -17,21 +19,18 @@ export default function Page() {
             text-shadow: 1px 1px 4px black;
           }
           .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
             background-color: rgba(0, 0, 0, 0.5);
           }
           h2 {
-            font-size: 2.5rem;
+            text-align: center;
+            padding: 10px;
           }
         `}</style>
       </Head>
       <div className="container">
         <h2>Mapa en tiempo real</h2>
-        <p>Monitoreo del transporte en curso...</p>
+        <Map />
       </div>
     </>
   );
