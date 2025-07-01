@@ -31,6 +31,7 @@ export default function Navbar() {
       <Link href="/rutas" className="nav-button">Rutas</Link>
       <Link href="/quienes-somos" className="nav-button">Quiénes Somos</Link>
       <Link href="/informacion" className="nav-button">Información</Link>
+      <Link href="/emergencia" className="nav-button">Emergencia</Link>
     </div>
   );
 }

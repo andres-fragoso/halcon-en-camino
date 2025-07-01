@@ -9,6 +9,7 @@ export default function Login() {
   const handleLogin = () => {
     const regex = /^\d{8}$/;
     if (regex.test(matricula)) {
+      sessionStorage.setItem("matricula", matricula);
       router.push('/bienvenida');
     } else {
       alert('Ingresa una matrícula válida de 8 dígitos');
