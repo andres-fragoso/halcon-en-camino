@@ -56,6 +56,12 @@ export default function Rutas() {
             margin: 20px auto;
             width: 250px;
           }
+          button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+          }
         `}</style>
       </Head>
       <div className="container">
@@ -78,6 +84,7 @@ export default function Rutas() {
           src="https://media.giphy.com/media/3o6ZsYm5C9Q9ZRx5Wc/giphy.gif"
           alt="Simulación ruta"
         />
+        <button onClick={() => router.push('/bienvenida')}>Volver al menú principal</button>
       </div>
     </>
   );

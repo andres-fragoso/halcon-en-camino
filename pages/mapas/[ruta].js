@@ -27,11 +27,18 @@ export default function RutaMapa() {
             padding: 20px;
             background-color: rgba(0,0,0,0.5);
           }
+          button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+          }
         `}</style>
       </Head>
       <div className="container">
         <h2>Mapa de Ruta: {ruta}</h2>
         <Map ruta={ruta} />
+        <button onClick={() => router.push('/rutas')}>Volver a rutas</button>
       </div>
     </>
   );

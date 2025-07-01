@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
+import Navbar from '../components/Navbar';
+
 export default function Bienvenida() {
   const router = useRouter();
   return (
@@ -30,7 +32,8 @@ export default function Bienvenida() {
           }
         `}</style>
       </Head>
-      <div className="container">
+      <Navbar />
+      <div className="container" style={{ paddingTop: '60px' }}>
         <h1>Bienvenido a Halcón en Camino</h1>
         <p>¿Qué deseas hacer?</p>
         <button onClick={() => router.push('/rutas')}>Ver rutas escolares</button>
