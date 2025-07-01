@@ -9,7 +9,7 @@ export default function Login() {
   const handleLogin = () => {
     const regex = /^\d{10}$/;
     if (regex.test(numero)) {
-      router.push('/rutas');
+      router.push('/bienvenida');
     } else {
       alert('Ingresa un número válido de 10 dígitos');
     }
