@@ -3,15 +3,15 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 export default function Login() {
-  const [numero, setNumero] = useState('');
+  const [matricula, setMatricula] = useState('');
   const router = useRouter();
 
   const handleLogin = () => {
-    const regex = /^\d{10}$/;
-    if (regex.test(numero)) {
+    const regex = /^\d{8}$/;
+    if (regex.test(matricula)) {
       router.push('/bienvenida');
     } else {
-      alert('Ingresa un número válido de 10 dígitos');
+      alert('Ingresa una matrícula válida de 8 dígitos');
     }
   };
 
@@ -49,9 +49,9 @@ export default function Login() {
         <h2>Acceso a Halcón en Camino</h2>
         <input
           type="tel"
-          maxLength="10"
-          placeholder="Ingresa tu número"
-          onChange={e => setNumero(e.target.value)}
+          maxLength="8"
+          placeholder="Ingresa tu matrícula"
+          onChange={e => setMatricula(e.target.value)}
         />
         <button onClick={handleLogin}>Entrar</button>
       </div>

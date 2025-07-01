@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
+import Navbar from '../components/Navbar';
+
 export default function QuienesSomos() {
   const router = useRouter();
   return (
@@ -32,7 +34,8 @@ export default function QuienesSomos() {
           }
         `}</style>
       </Head>
-      <div className="container">
+      <Navbar />
+      <div className="container" style={{ paddingBottom: '60px' }}>
         <h1>¿Quiénes Somos?</h1>
         <p>
           <strong>"Halcón en Camino" – Transporte Escolar Seguro y Monitoreado</strong>

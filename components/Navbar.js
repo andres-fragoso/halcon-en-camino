@@ -2,33 +2,35 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <nav className="navbar">
+    <div className="navbar">
       <style jsx>{`
         .navbar {
           position: fixed;
-          top: 0;
+          bottom: 0;
           width: 100%;
           background-color: rgba(0, 0, 0, 0.8);
-          color: white;
-          padding: 10px;
           display: flex;
-          justify-content: center;
+          justify-content: space-around;
+          padding: 10px 0;
           z-index: 1000;
         }
-        .nav-link {
-          margin: 0 15px;
-          text-decoration: none;
+        .nav-button {
+          background: none;
+          border: none;
           color: white;
+          font-size: 16px;
           font-weight: bold;
+          cursor: pointer;
+          text-decoration: none;
         }
-        .nav-link:hover {
+        .nav-button:hover {
           text-decoration: underline;
         }
       `}</style>
-      <Link href="/bienvenida" className="nav-link">Inicio</Link>
-      <Link href="/rutas" className="nav-link">Rutas</Link>
-      <Link href="/quienes-somos" className="nav-link">Quiénes Somos</Link>
-      <Link href="/informacion" className="nav-link">Información del Usuario</Link>
-    </nav>
+      <Link href="/bienvenida" className="nav-button">Inicio</Link>
+      <Link href="/rutas" className="nav-button">Rutas</Link>
+      <Link href="/quienes-somos" className="nav-button">Quiénes Somos</Link>
+      <Link href="/informacion" className="nav-button">Información</Link>
+    </div>
   );
 }

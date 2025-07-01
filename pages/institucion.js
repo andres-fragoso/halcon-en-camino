@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import Navbar from '../components/Navbar';
+
 export default function Institucion() {
   return (
     <>
@@ -26,7 +28,8 @@ export default function Institucion() {
           }
         `}</style>
       </Head>
-      <div className="container">
+      <Navbar />
+      <div className="container" style={{ paddingBottom: '60px' }}>
         <h1>Información Institucional</h1>
         <p>
           La Universidad Tecnológica de Corregidora (UTC) es una institución comprometida con la educación 

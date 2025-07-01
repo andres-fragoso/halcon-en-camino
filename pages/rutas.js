@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
+import Navbar from '../components/Navbar';
+
 export default function Rutas() {
   const router = useRouter();
   const [horaActual, setHoraActual] = useState(new Date().toLocaleTimeString());
@@ -64,7 +66,8 @@ export default function Rutas() {
           }
         `}</style>
       </Head>
-      <div className="container">
+      <Navbar />
+      <div className="container" style={{ paddingBottom: '60px' }}>
         <h2>Rutas disponibles</h2>
         <p>Hora actual: {horaActual}</p>
         <div className="rutas">
