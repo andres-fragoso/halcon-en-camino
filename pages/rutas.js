@@ -7,11 +7,11 @@ export default function Rutas() {
   const [horaActual, setHoraActual] = useState(new Date().toLocaleTimeString());
 
   const rutas = [
-    { id: 1, nombre: "Ruta Norte", salida: "06:50 AM", llegada: "07:20 AM" },
-    { id: 2, nombre: "Ruta Sur", salida: "07:00 AM", llegada: "07:30 AM" },
-    { id: 3, nombre: "Ruta Este", salida: "07:10 AM", llegada: "07:40 AM" },
-    { id: 4, nombre: "Ruta Oeste", salida: "07:20 AM", llegada: "07:50 AM" },
-    { id: 5, nombre: "Ruta Central", salida: "07:30 AM", llegada: "08:00 AM" }
+    { id: 1, nombre: "Ruta Norte", salida: "06:50 AM", llegada: "07:20 AM", slug: "norte" },
+    { id: 2, nombre: "Ruta Sur", salida: "07:00 AM", llegada: "07:30 AM", slug: "sur" },
+    { id: 3, nombre: "Ruta Este", salida: "07:10 AM", llegada: "07:40 AM", slug: "este" },
+    { id: 4, nombre: "Ruta Oeste", salida: "07:20 AM", llegada: "07:50 AM", slug: "oeste" },
+    { id: 5, nombre: "Ruta Central", salida: "07:30 AM", llegada: "08:00 AM", slug: "central" }
   ];
 
   useEffect(() => {
@@ -49,6 +49,7 @@ export default function Rutas() {
             background-color: rgba(255,255,255,0.1);
             padding: 10px;
             border-radius: 8px;
+            cursor: pointer;
           }
           .animacion {
             display: block;
@@ -62,7 +63,11 @@ export default function Rutas() {
         <p>Hora actual: {horaActual}</p>
         <div className="rutas">
           {rutas.map(ruta => (
-            <div className="ruta" key={ruta.id}>
+            <div
+              className="ruta"
+              key={ruta.id}
+              onClick={() => router.push(`/mapas/${ruta.slug}`)}
+            >
               <strong>{ruta.nombre}</strong><br />
               Salida: {ruta.salida} | Llegada estimada: {ruta.llegada}
             </div>
@@ -73,7 +78,6 @@ export default function Rutas() {
           src="https://media.giphy.com/media/3o6ZsYm5C9Q9ZRx5Wc/giphy.gif"
           alt="Simulación ruta"
         />
-        <button onClick={() => router.push('/mapa')}>Ver recorrido en mapa</button>
       </div>
     </>
   );
