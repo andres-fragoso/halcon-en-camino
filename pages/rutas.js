@@ -1,8 +1,26 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
-export default function Page() {
+export default function Rutas() {
   const router = useRouter();
+  const [horaActual, setHoraActual] = useState(new Date().toLocaleTimeString());
+
+  const rutas = [
+    { id: 1, nombre: "Ruta Norte", salida: "06:50 AM", llegada: "07:20 AM" },
+    { id: 2, nombre: "Ruta Sur", salida: "07:00 AM", llegada: "07:30 AM" },
+    { id: 3, nombre: "Ruta Este", salida: "07:10 AM", llegada: "07:40 AM" },
+    { id: 4, nombre: "Ruta Oeste", salida: "07:20 AM", llegada: "07:50 AM" },
+    { id: 5, nombre: "Ruta Central", salida: "07:30 AM", llegada: "08:00 AM" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHoraActual(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <Head>
@@ -17,27 +35,45 @@ export default function Page() {
             text-shadow: 1px 1px 4px black;
           }
           .container {
+            padding: 20px;
+            background-color: rgba(0,0,0,0.5);
+            min-height: 100vh;
+          }
+          .rutas {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
+            gap: 10px;
+            margin-top: 20px;
           }
-          h2 {
-            font-size: 2.5rem;
+          .ruta {
+            background-color: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 8px;
+          }
+          .animacion {
+            display: block;
+            margin: 20px auto;
+            width: 250px;
           }
         `}</style>
       </Head>
       <div className="container">
         <h2>Rutas disponibles</h2>
-        <ul>
-          <li>Ruta 1 - 7:00 AM</li>
-          <li>Ruta 2 - 7:15 AM</li>
-          <li>Ruta 3 - 7:30 AM</li>
-        </ul>
-        <img src="https://media.giphy.com/media/3o6ZsYm5C9Q9ZRx5Wc/giphy.gif" alt="Ruta animada" style={{width: "300px", margin: "20px 0"}} />
-        <button onClick={() => router.push('/mapa')}>Ver recorrido</button>
+        <p>Hora actual: {horaActual}</p>
+        <div className="rutas">
+          {rutas.map(ruta => (
+            <div className="ruta" key={ruta.id}>
+              <strong>{ruta.nombre}</strong><br />
+              Salida: {ruta.salida} | Llegada estimada: {ruta.llegada}
+            </div>
+          ))}
+        </div>
+        <img
+          className="animacion"
+          src="https://media.giphy.com/media/3o6ZsYm5C9Q9ZRx5Wc/giphy.gif"
+          alt="Simulación ruta"
+        />
+        <button onClick={() => router.push('/mapa')}>Ver recorrido en mapa</button>
       </div>
     </>
   );
